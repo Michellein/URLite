@@ -1,0 +1,360 @@
+html{
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body{
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    background: #00acac;
+}
+
+@font-face {
+    font-family: Karla;
+    src: url(/fonts/Karla-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(/fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+h1, h2, h3{
+    font-family: Karla;
+}
+
+p, a, ul, label, button{
+    font-family: Montserrat;
+}
+
+#header{
+    z-index: 4;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    user-select: none;
+    overflow: hidden;
+}
+
+#nav{
+    z-index: 5;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#header a{
+    padding: 2rem;
+    text-decoration: none;
+    color: whitesmoke;
+    transition: all 0.3s ease;
+}
+
+#header a:hover{
+    background: hsla(0, 0%, 0%, 0.214);
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    text-decoration: white underline;
+}
+
+#login-bar{
+    margin-left: auto;
+    z-index: 5;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+#login-bar #login-btn{
+    padding: 2rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    color: whitesmoke;
+    font-weight: normal;
+}
+
+#login-bar #login-btn:hover{
+    background: hsla(0, 0%, 0%, 0.214);
+    box-shadow: none;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    text-decoration: white underline;
+}
+
+#login-bar #signup-btn{
+
+}
+
+#layout{
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.box{
+    padding: 2rem;
+}
+
+#shortener{
+    background-color: #4cc4c4;
+    background: linear-gradient(
+        to bottom,
+        #00acac 0%,
+        #4cc4c4 45%
+    );
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    row-gap: 30px;
+    padding-bottom: 0;
+}
+
+.functbox{
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 30px;
+    background-color: azure;
+    padding: 5rem;
+    border-radius: 45px;
+    box-shadow: inset 1px 1px 8px 2px rgb(40, 115, 115);
+}
+
+#longURL{
+    width: 400px;
+    height: 35px;
+    border-radius: 15px;
+    align-self: center;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    background-color: #f3e308;
+    transition: all 0.2s ease;
+}
+
+.btn:hover{
+    box-shadow: 0 0 1px 2px hsla(0, 0%, 0%, 0.3);
+}
+
+#dashboard{
+    background-color: #7fd5d5;
+    background: linear-gradient(
+        to bottom,
+        #4cc4c4 0%,
+        #7fd5d5 45%
+    );
+}
+
+#analytic-box{
+    padding-top: 2rem;
+    max-height: 900px;
+    overflow: scroll;
+    scrollbar-width: none;
+    display: grid;
+    grid-template-areas:
+        "title title"
+        "list board";
+    grid-template-rows: 45px auto;
+    grid-template-columns: 30% 70%;
+}
+
+#link-list{
+    grid-area: list;
+}
+
+#board{
+    grid-area: board;
+}
+
+#about{
+    padding: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #464545;
+    color: white;
+}
+
+.container{
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(180, 85%, 21%, 0.4);
+    backdrop-filter: blur(15px);
+}
+
+.container .close-btn{
+    align-self: last baseline;
+    user-select: none;
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+#show:checked ~ .container{
+    display: flex;
+}
+
+#show:checked ~ .btn{
+    display: none;
+}
+
+.container .popup{
+    z-index: 7;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background-color: white;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 0 4px 4px hsla(0, 0%, 0%, 0.2);
+}
+
+.popup .text{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.popup form{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup form .data{
+    height: 50px;
+    width: 100%;
+    margin: 25px 0;
+}
+
+.popup .data label{
+    font-size: 20px;
+}
+
+form .data input{
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    border-radius: 15px;
+    border: 1px solid silver;
+}
+
+form .data input:focus{
+    border-color: #097777;
+    border-bottom-width: 4px;
+}
+
+form .forgot-pass{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    align-self: start;
+    justify-content: center;
+}
+
+form .forgot-pass a{
+    color: #086262;
+    text-decoration: none;
+}
+
+form .forgot-pass a:hover{
+    text-decoration: underline;
+}
+
+form .button{
+    margin: 20px 0;
+    height: 45px;
+    width: 100%;
+}
+
+form .button button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-size: 20px;
+    cursor: pointer;
+    background: #f3e308;
+    box-shadow: 0 1px 3px 2px hsla(180, 85%, 21%, 0.2);
+    transition: all 0.3s ease;
+}
+
+form .button button:hover{
+    background: #d1c308;
+}
+
+.popup .signup-link{
+    text-align: center;
+}
+
+.popup .signup-link a{
+    color: #086262;
+    text-decoration: none;
+}
+
+.popup .signup-link a:hover{
+    text-decoration: underline;
+}
+
+.backdrop{
+    position: absolute;
+    inset: 0;
+    height: 200%;
+    background: linear-gradient(
+        to bottom,
+        hsl(0deg 0% 0% / 0.1) 0%,
+        transparent 50%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        black 0% 50%,
+        transparent 50% 100%
+    );
+    backdrop-filter: blur(16px);
+}
+
+.backdrop-edge{
+    --thickness: 8px;
+    height: var(--thickness);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(0deg 0% 0% / 0.5);
+    backdrop-filter: blur(8px) brightness(96%);
+    mask-image: linear-gradient(
+        to bottom,
+        black var(--thickness),
+        transparent var(--thickness)
+    );
+    transform: translateY(100%);
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="URL, shortener, URL shortener, link shortener, URL shortening, link shortening, URL shortener API, link shortener API">
+        <meta name="description" content="Website that shortens URLs">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>URLite</title>
+        <link href="/index.css" rel="stylesheet" type="text/css" media="all">
+    </head>
+    <body>
+        <div class="container">
+            <div class="popup">
+                <label class="close-btn" for="show">x</label>
+                <div class="text">
+                    <h2>Welcome</h2>
+                </div>
+                <form action="#">
+                    <div class="data">
+                        <label>Email or Username:</label>
+                        <input type="text" id="email-or-username" required>
+                    </div>
+                    <div class="data">
+                        <label>Password:</label>
+                        <input type="text" id="password" required>
+                    </div>
+                    <div class="forgot-pass">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <div class="button">
+                    <button type="submit">Login</button>
+                </div>
+                </form>
+                <div class="signup-link">
+                    <p>Not a member?<a href="#">Sign up now!</a></p>
+                </div>
+            </div>
+        </div>
+        <div id="header">
+            <div style="z-index: 2;"><h1><a href="index.html">URLite</a></h1></div>
+            <div id="nav">
+                <a href="#shortener">Shortener</a>
+                <a href="#dashboard">Dashboard</a>
+            </div>
+            <div id="login-bar">
+                <input type="checkbox" id="login"></button>
+                <label class="btn" class="btn" id="login-btn" for="login">Log in</label>
+                <input type="checkbox" id="signup"></button>
+                <label class="btn" class="btn" for="signup">Sign up</label>
+            </div>
+            <div class="backdrop"></div>
+            <div class="backdrop-edge"></div>
+        </div>
+        <div id="layout">
+            <div class="box" id="shortener">
+                <div><p style="font-size: 40px; text-align: center; color: white;">Make your link <strong>beautiful</strong> and track its <strong>reach</strong> <br>with just a single <strong>click!</strong></p></div>
+                <div class="functbox">
+                    <label for="longURL" style="font-weight: bold; font-size: 20px;">Long URL:</label>
+                    <input type="text" name="longURL" id="longURL">
+                    <button type="submit" class="btn">Get link</button>
+                </div>
+            </div>
+            <div class="box" id="dashboard">
+                <div class="functbox" id="analytic-box">
+                    <h1 style="grid-area: title;">Analytics Dashboard</h1>
+                    <div id="link-list">
+                        <h3>Generated Link List</h3>
+                    </div>
+                    <div id="board">
+                        <h3>Analytics Dashboard</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="box" id="about">
+                <h1>About</h1>
+                <p>This website is built as the final project for <strong>Nature of Programming Language</strong> course by a team of 4.</p>
+                <p>The <strong>main goals</strong> of the website are to generate a shorter and more refined link from the initial long URL and to let the user track its virality.</p>
+            </div>
+        </div>
+    </body>
+</html>
