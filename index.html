@@ -6,15 +6,13 @@
         <meta name="description" content="Website that shortens URLs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>URLite</title>
-        <link href="/index.css" rel="stylesheet" type="text/css" media="all">
+        <link href="/URLite/index.css" rel="stylesheet" type="text/css" media="all">
     </head>
     <body>
-        <div class="container">
-            <div class="popup">
-                <label class="close-btn" for="show">x</label>
-                <div class="text">
-                    <h2>Welcome</h2>
-                </div>
+        <div class="container" id="login-signup-box">
+            <div class="popup" id="login-popup">
+                <input type="checkbox" id="close-btn" onclick="closeLogIn()">
+                <label class="close-popup" for="close-btn">&#x2715;</label>
                 <form action="#">
                     <div class="data">
                         <label>Email or Username:</label>
@@ -25,14 +23,56 @@
                         <input type="text" id="password" required>
                     </div>
                     <div class="forgot-pass">
-                    <a href="#">Forgot password?</a>
-                </div>
-                <div class="button">
-                    <button type="submit">Login</button>
-                </div>
+                        <a href="#" onclick="directToForgot()">Forgot password?</a>
+                    </div>
+                    <div class="button">
+                        <button type="submit">Login</button>
+                    </div>
                 </form>
-                <div class="signup-link">
-                    <p>Not a member?<a href="#">Sign up now!</a></p>
+                <div class="link">
+                    <p>Not a member?<a href="#" onclick="directToSignUp()">Sign up now!</a></p>
+                </div>
+            </div>
+            <div class="popup" id="signup-popup">
+                <input type="checkbox" id="close-btn" onclick="closeSignUp()">
+                <label class="close-popup" for="close-btn">&#x2715;</label>
+                <h2>Sign up for <strong>free!</strong></h2>
+                <form action="#">
+                    <div class="data">
+                        <label>Username:</label>
+                        <input type="text" id="new-username" required>
+                    </div>
+                    <div class="data">
+                        <label>Email:</label>
+                        <input type="text" id="new-email" required>
+                    </div>
+                    <div class="data">
+                        <label>Password:</label>
+                        <input type="text" id="new-password" required>
+                    </div>
+                    <div class="button">
+                        <button type="submit">Sign Up</button>
+                    </div>
+                </form>
+                <div class="link">
+                    <p>Have an account?<a href="#" onclick="directToLogIn()">Log in.</a></p>
+                </div>
+            </div>
+            <div class="popup" id="forgot-popup">
+                <input type="checkbox" id="close-btn" onclick="closeForgot()">
+                <label class="close-popup" for="close-btn">&#x2715;</label>
+                <h2>Recover your account</h2>
+                <form action="#">
+                    <div class="data">
+                        <label>Enter your username or Email:</label>
+                        <input type="text" id="email-or-username" required>
+                    </div>
+                    <div class="button">
+                        <button type="submit">Get recovery code</button>
+                    </div>
+                </form>
+                <div class="link">
+                    <p><a href="#" onclick="directToSignUp()">Sign up</a> or <a href="#" onclick="directToLogIn()">Log in</a></p>
                 </div>
             </div>
         </div>
@@ -43,21 +83,23 @@
                 <a href="#dashboard">Dashboard</a>
             </div>
             <div id="login-bar">
-                <input type="checkbox" id="login"></button>
-                <label class="btn" class="btn" id="login-btn" for="login">Log in</label>
-                <input type="checkbox" id="signup"></button>
-                <label class="btn" class="btn" for="signup">Sign up</label>
+                <input type="checkbox" id="login" onclick="openLogIn()">
+                <label class="btn" id="login-btn" for="login">Log in</label>
+                <input type="checkbox" id="signup" onclick="openSignUp()"></button>
+                <label class="btn" class="btn" id="signup-btn" for="signup">Sign up</label>
             </div>
             <div class="backdrop"></div>
             <div class="backdrop-edge"></div>
         </div>
         <div id="layout">
             <div class="box" id="shortener">
-                <div><p style="font-size: 40px; text-align: center; color: white;">Make your link <strong>beautiful</strong> and track its <strong>reach</strong> <br>with just a single <strong>click!</strong></p></div>
                 <div class="functbox">
-                    <label for="longURL" style="font-weight: bold; font-size: 20px;">Long URL:</label>
+                    <div>
+                        <p style="font-size: 40px; text-align: center; color: grey; user-select: none;">Make your link <strong>beautiful</strong> and track its <strong>reach</strong> <br>with just a single <strong>click!</strong></p>
+                    </div>
+                    <label for="longURL" style="font-size: 20px;">Long URL:</label>
                     <input type="text" name="longURL" id="longURL">
-                    <button type="submit" class="btn">Get link</button>
+                    <button type="submit" class="btn" id="getlink-btn">Get link</button>
                 </div>
             </div>
             <div class="box" id="dashboard">
@@ -79,3 +121,116 @@
         </div>
     </body>
 </html>
+
+<script>
+    function closeLogIn() {
+        var closeBtn = document.getElementById("close-btn");
+        var container = document.getElementById("login-signup-box");
+        var logInBox = document.getElementById("login-popup");
+
+        if(closeBtn.checked == true){
+            container.style.display = "none";
+            logInBox.style.display = "none";
+            closeBtn.checked = false;
+        }
+        else{
+            container.display.style = "flex";
+            logInBox.style.display = "flex";
+        }
+    }
+
+    function openLogIn(){
+        var logBtn = document.getElementById("login");
+        var container = document.getElementById("login-signup-box");
+        var logInBox = document.getElementById("login-popup");
+        var signUpBox = document.getElementById("signup-popup");
+        var forgotBox = document.getElementById("forgot-popup");
+
+        if(logBtn.checked == true){
+            container.style.display = "flex";
+            logInBox.style.display = "flex";
+            signUpBox.style.display = "none";
+            forgotBox.style.display = "none";
+            logBtn.checked = false;
+        }
+    }
+
+    function closeSignUp(){
+        var closeBtn = document.getElementById("close-btn");
+        var container = document.getElementById("login-signup-box");
+        var signUpBox = document.getElementById("signup-popup");
+
+        if(closeBtn.checked == true){
+            container.style.display = "none";
+            signUpBox.style.display = "none";
+            closeBtn.checked = false;
+        }
+        else{
+            container.display.style = "flex";
+            signUpBox.style.display = "flex";
+        }
+    }
+
+    function openSignUp(){
+        var signBtn = document.getElementById("signup");
+        var container = document.getElementById("login-signup-box");
+        var signUpBox = document.getElementById("signup-popup");
+        var logInBox = document.getElementById("login-popup");
+        var forgotBox = document.getElementById("forgot-popup");
+
+        if(signBtn.checked == true){
+            container.style.display = "flex";
+            signUpBox.style.display = "flex";
+            logInBox.style.display = "none";
+            forgotBox.style.display = "none";
+            signBtn.checked = false;
+        }
+    }
+
+    function closeForgot(){
+        var closeBtn = document.getElementById("close-btn");
+        var container = document.getElementById("login-signup-box");
+        var forgotBox = document.getElementById("forgot-popup");
+
+        if(closeBtn.checked == true){
+            container.style.display = "none";
+            forgotBox.style.display = "none";
+            closeBtn.checked = false;
+        }
+        else{
+            container.display.style = "flex";
+            forgotBox.style.display = "flex";
+        }
+    }
+
+    function directToSignUp(){
+        var signUpBox = document.getElementById("signup-popup");
+        var logInBox = document.getElementById("login-popup");
+        var forgotBox = document.getElementById("forgot-popup");
+
+        logInBox.style.display = "none";
+        signUpBox.style.display = "flex";
+        forgotBox.style.display = "none";
+    }
+
+    function directToForgot(){
+        //for the Forgot Password? label
+        var forgotBox = document.getElementById("forgot-popup");
+        var logInBox = document.getElementById("login-popup");
+        var signUpBox = document.getElementById("signup-popup");
+
+        logInBox.style.display = "none";
+        signUpBox.style.display = "none";
+        forgotBox.style.display = "flex";
+    }
+
+    function directToLogIn(){
+        var forgotBox = document.getElementById("forgot-popup");
+        var logInBox = document.getElementById("login-popup");
+        var signUpBox = document.getElementById("signup-popup");
+
+        logInBox.style.display = "flex";
+        signUpBox.style.display = "none";
+        forgotBox.style.display = "none";
+    }
+</script>

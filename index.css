@@ -15,12 +15,12 @@ body{
 
 @font-face {
     font-family: Karla;
-    src: url(/fonts/Karla-VariableFont_wght.ttf);
+    src: url(/URLite/fonts/Karla-VariableFont_wght.ttf);
 }
 
 @font-face {
     font-family: Montserrat;
-    src: url(/fonts/Montserrat-VariableFont_wght.ttf);
+    src: url(/URLite/fonts/Montserrat-VariableFont_wght.ttf);
 }
 
 h1, h2, h3{
@@ -70,7 +70,6 @@ p, a, ul, label, button{
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    column-gap: 10px;
 }
 
 #login-bar #login-btn{
@@ -91,7 +90,23 @@ p, a, ul, label, button{
 }
 
 #login-bar #signup-btn{
+    padding: 2rem;
+    background: #086262;
+    border-radius: 0;
+    border: none;
+    color: whitesmoke;
+    font-weight: normal;
+}
 
+#login-bar #signup-btn:hover{
+    box-shadow: none;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    text-decoration: white underline;
+}
+
+input[type="checkbox"]{
+    display: none;
 }
 
 #layout{
@@ -128,8 +143,9 @@ p, a, ul, label, button{
 }
 
 #longURL{
-    width: 400px;
-    height: 35px;
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
     border-radius: 15px;
     align-self: center;
 }
@@ -151,6 +167,11 @@ p, a, ul, label, button{
 
 .btn:hover{
     box-shadow: 0 0 1px 2px hsla(0, 0%, 0%, 0.3);
+}
+
+#getlink-btn{
+    width: 100%;
+    height: 100%;
 }
 
 #dashboard{
@@ -192,7 +213,12 @@ p, a, ul, label, button{
 }
 
 .container{
-    position: absolute;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
     display: none;
     align-items: center;
     justify-content: center;
@@ -203,43 +229,29 @@ p, a, ul, label, button{
     backdrop-filter: blur(15px);
 }
 
-.container .close-btn{
+.container .close-popup{
     align-self: last baseline;
     user-select: none;
     cursor: pointer;
     font-size: 40px;
     font-weight: bold;
+    transition: color 0.2s;
 }
 
-input[type="checkbox"]{
-    display: none;
-}
-
-#show:checked ~ .container{
-    display: flex;
-}
-
-#show:checked ~ .btn{
-    display: none;
+.container .close-popup:hover{
+    color: #086262;
 }
 
 .container .popup{
-    z-index: 7;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
+    padding: 2rem;
     background-color: white;
     border: none;
     border-radius: 45px;
     box-shadow: 0 0 4px 4px hsla(0, 0%, 0%, 0.2);
-}
-
-.popup .text{
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
 }
 
 .popup form{
@@ -267,30 +279,30 @@ form .data input{
     border: 1px solid silver;
 }
 
-form .data input:focus{
-    border-color: #097777;
-    border-bottom-width: 4px;
-}
-
 form .forgot-pass{
-    margin-top: 25px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: row;
     align-self: start;
     justify-content: center;
 }
 
-form .forgot-pass a{
+#login-signup-box a{
+    padding: 0;
     color: #086262;
     text-decoration: none;
 }
 
-form .forgot-pass a:hover{
+#login-signup-box a:hover{
+    background: transparent;
+    color: #086262;
     text-decoration: underline;
+    text-shadow: none;
 }
 
 form .button{
-    margin: 20px 0;
+    padding: 40px;
     height: 45px;
     width: 100%;
 }
@@ -312,17 +324,8 @@ form .button button:hover{
     background: #d1c308;
 }
 
-.popup .signup-link{
+.popup .link{
     text-align: center;
-}
-
-.popup .signup-link a{
-    color: #086262;
-    text-decoration: none;
-}
-
-.popup .signup-link a:hover{
-    text-decoration: underline;
 }
 
 .backdrop{
